@@ -1,3 +1,9 @@
+#Codigo que tiene como finalidad la implementacion de canny para la deteccion de las coordenadas de los puntos utilizando
+#primero una deteccion de contornos con Canny para mayor presicion pero mayor coste computacional
+#Luego se planificaba realizar un calculo del centroide de dichos perimetros
+#CODIGO INCOMPLETO - DESCONTINUADO DESDE 03/09/24
+#Ultima version -> detectar bordes canny y determinar figura en cuestion
+#Se deja en repositorio ya que con simples modificaciones se logra la funcionalidad deseada
 import cv2 as cv
 import cv2
 import numpy as np
