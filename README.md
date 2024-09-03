@@ -23,5 +23,4 @@ Se buscan pocas cargas computacionales y la mayor presicion posible.
 
 ### Multimedia
 # Deteccion de bordes con canny
-![Deteccion de bordes con Canny](Documentation/Canny.mp4)
-![Deteccion de bordes con Canny](Documentation/Canny(1).jpg)
+![Deteccion de bordes con Canny](Documentation/Canny(1).jpeg)
