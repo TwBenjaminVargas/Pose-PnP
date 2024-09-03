@@ -38,19 +38,26 @@ while True:
     #Dibujado de contornos en imagen
     cv2.drawContours(frame,contornos,-1,(0,0,255), 2)
     
-    # Iterar sobre cada contorno
-    for contour in contornos:
-    # Calcular la aproximación del contorno
-        epsilon = 0.02 * cv2.arcLength(contour, True) # Margen de error epsilon
-        approx = cv2.approxPolyDP(contour, epsilon, True)       
-            
-        # Filtrado de patron elegido
-        if len(approx) == 3:
-            print("El contorno es un triángulo")
-        elif len(approx) == 4:
-            print("El contorno es un cuadrado o rectángulo")
-        elif len(approx) > 10:
-            print("El contorno es un círculo")
+    # Recorrer cada contorno y calcular su centroide
+    for contorno in contornos:
+        # Calcular los momentos del contorno
+        M = cv2.moments(contorno)
+    
+        # Calcular las coordenadas del centroide usando los momentos
+        # m10 suma ponderada con la intesidad del pixel (1 para los contornos), m00 area del contorno
+        if M["m00"] != 0:
+            cx = int(M["m10"] / M["m00"]) # x
+            cy = int(M["m01"] / M["m00"]) # y
+        else:
+            cx, cy = 0, 0
+    
+        # Dibujar el centroide en la imagen
+        cv2.circle(frame, (cx, cy), 5, (0, 0, 255), -1)
+    
+        # Marcar el centroide
+        cv2.putText(frame, f": ({cx}, {cy})", (cx - 50, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+
+    
         
     # Mostrar imagen
     cv.imshow('camera',frame)

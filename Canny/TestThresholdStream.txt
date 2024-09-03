@@ -1,9 +1,0 @@
-Martes 3/09/24 18:34
-    Se realiza prueba con vincha de luces infrarojo y filtro infrarojo
-    Detecta bien las 3 luces el algoritmo pero el problema esta en que las luces son "direccionables"
-    si roto la cabeza, las mismas dejan de afectar a al camara y no genera intensidad en los pixeles
-    En cuanto a la forma de los mismos, no tiene presicion de que figura se trata, sea cuadrado, circulo, triangulo
-    Se me ocurre hacerlo flexible ante las situaciones en las que no detecta todos los puntos o en situaciones en las
-    que no puede determinar la forma del cuerpo. Claro esto tiene una desventaja que sin implementar alcanzo a ver. si
-    no puede distinguir circulos en especifico, tendremos problemas porque cualquier cosa extraña sera considerado como un
-    punto. Esto se puede trabajar con los filtros o con metodos alternativos para la deteccion de bordes
