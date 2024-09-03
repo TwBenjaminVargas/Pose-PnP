@@ -22,4 +22,4 @@ Se buscan pocas cargas computacionales y la mayor presicion posible.
 - Aqui colocare documentacion de interes
 
 ### Multimedia
-![Deteccion de bordes con Canny](Documentacion/.gif)
+![Deteccion de bordes con Canny](Documentacion/Cannytest.webm)
