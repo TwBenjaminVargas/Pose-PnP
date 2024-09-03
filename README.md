@@ -24,3 +24,7 @@ Se buscan pocas cargas computacionales y la mayor presicion posible.
 ### Multimedia
 # Deteccion de bordes con canny
 <img src="Documentation/Canny(1).jpeg" alt="Deteccion de bordes" width="500"/>
+
+# Fitro infrarojo
+<img src="Documentation/Filtro Infrarojo.jpeg" alt="filtro" width="500"/>
+
