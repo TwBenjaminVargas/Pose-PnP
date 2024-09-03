@@ -3,14 +3,13 @@
 #Threshold es directo y simple, se basa en un umbral para la determinacion de bordes
 #decidiendo entre color blanco y negro de los pixeles segun corresponda.
 #Se lo considera optimo dado que trabajamos con luces infrarrojas que proveen de alta intensidad a los pixeles.
-#Se evita el uso de filtros para hacer el proceso aun mas optimo
+#Se evita el uso de filtros para hacvcer el proceso aun mas optimo
 
-import cv2 as cv
 import cv2
 import numpy as np
 
 # Iniciamos la camara
-camera = cv.VideoCapture(0)
+camera = cv2.VideoCapture(0)
 if not camera.isOpened():
     print("No se pudo abrir la camara")
     exit()
@@ -60,17 +59,17 @@ while True:
     
         
     # Mostrar imagen
-    cv.imshow('camera',frame)
+    cv2.imshow('camera',frame)
     # Mostrar Threshold
-    cv.imshow('Threshold',binary_image)
+    cv2.imshow('Threshold',binary_image)
     
     # Orden q para salir
-    if cv.waitKey(1) == ord('q'):
+    if cv2.waitKey(1) == ord('q'):
         break
     
 # Liberamos la camara
 camera.release()
-cv.destroyAllWindows()
+cv2.destroyAllWindows()
     
     
     
