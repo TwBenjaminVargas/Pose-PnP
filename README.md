@@ -22,8 +22,8 @@ Se buscan pocas cargas computacionales y la mayor presicion posible.
 - Aqui colocare documentacion de interes
 
 ### Multimedia
-# Deteccion de bordes con canny
-<img src="Documentation/Canny(1).jpeg" alt="Deteccion de bordes" width="250"/>
+#### Deteccion de bordes con canny
+<img src="Documentation/Canny(1).jpeg" alt="Deteccion de bordes" width="350"/>
 
-# Thresholding y Centroide
-<img src="Documentation/Thresholding y Centroide.png" alt="Thresholding y Centroide" width="250"/>
+#### Thresholding y Centroide
+<img src="Documentation/Thresholding y Centroide.png" alt="Thresholding y Centroide" width="500"/>
