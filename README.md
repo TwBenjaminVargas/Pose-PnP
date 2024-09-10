@@ -23,7 +23,18 @@ Se buscan pocas cargas computacionales y la mayor presicion posible.
 
 ### Multimedia
 #### Deteccion de bordes con canny
-<img src="Documentation/Canny(1).jpeg" alt="Deteccion de bordes" width="350"/>
+Primer metodo propuesto para la deteccion de bordes
+
+<img src="Documentation/Canny(1).jpeg" alt="Deteccion de bordes" width="300"/>
 
 #### Thresholding y Centroide
+Se calcula centroide de perimetros obtenidos con metodo de Thresholding (otro metodo propuesto para encontrar perimetros mas velozmente)
+
 <img src="Documentation/Thresholding y Centroide.png" alt="Thresholding y Centroide" width="500"/>
+
+#### PnP & useExtrinsicGuess
+Primeras pruebas de PnP, dado el patron de 3 puntos se utiliza estimacion inicial con ExtrinsicGuess en SOLVE_PNPITERATIVE (metodo default). Igualmente continuan los errores de presicion
+
+<img src="Documentation/PnP&useExtrinsicGuess(2).png" alt="PnP&useExtrinsicGuess" width="500"/>
+<img src="Documentation/PnP&useExtrinsicGuess(1).png" alt="PnP&useExtrinsicGuess" width="500"/>
+<img src="Documentation/PnP&useExtrinsicGuess(3).png" alt="PnP&useExtrinsicGuess" width="500"/>
