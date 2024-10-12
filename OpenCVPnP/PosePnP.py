@@ -3,7 +3,10 @@
 # filtros, se cuenta con filtro fisico de infrarojo
 # Se utilizara threshold y un proceso de calculo de centroide para determinar de manera dinamica las coordenadas
 # 2D (de la imagen) de interes para la ejecucion del metodos PnP default de la libreria OpenCV
-
+# REPORTES:
+# -Funciona en condiciones ideales (3 puntos y patron alineado)
+# -Ante movimientos se ve gravemente afectado
+# - Buena base para iniciar el proyecto
 import cv2
 import numpy as np
 
