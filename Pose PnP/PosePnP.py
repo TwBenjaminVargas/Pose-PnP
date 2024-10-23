@@ -83,6 +83,41 @@ def applyThreshold(grayscale, umbral = 127, color = 255, operationtype = cv2.THR
     """
     return cv2.threshold(grayscale, umbral, color, operationtype)
 
+# Implemetar Canny 
+def applyCanny(grayscale,inf = 50,sup = 350):
+    """
+    Aplica el detector de bordes Canny sobre una imagen en escala de grises.
+
+    Parámetros:
+    - grayscale: Imagen en escala de grises (numpy array) a la cual se le aplicará el detector de bordes Canny.
+    - inf (int, opcional): Umbral inferior para la detección de bordes. Los píxeles con un gradiente
+      por debajo de este valor no serán considerados como bordes. Valor por defecto: 50.
+    - sup (int, opcional): Umbral superior para la detección de bordes. Los píxeles con un gradiente
+      mayor que este valor serán considerados como bordes. Valor por defecto: 350.
+
+    Retorna:
+    - edges: Imagen binaria resultante (numpy array) donde los píxeles con valor 255 representan los bordes 
+      detectados y los píxeles con valor 0 representan áreas sin bordes.
+
+    Descripción:
+    - El detector de bordes Canny es un algoritmo basado en la detección de gradientes en la imagen.
+      Detecta bordes siguiendo estos pasos:
+      1. **Gradiente de la imagen**: Calcula los cambios en la intensidad de los píxeles (gradiente).
+      2. **Umbralización**: Los píxeles cuyo gradiente es mayor que el umbral superior se consideran 
+         bordes fuertes y se marcan inmediatamente. Los píxeles cuyo gradiente está entre los dos umbrales
+         se consideran bordes débiles, pero solo se marcan como bordes si están conectados a un borde fuerte.
+    - Los parámetros `inf` y `sup` determinan cuán estricta es la detección de bordes. Umbrales más bajos 
+      detectan más bordes, incluidos algunos ruidosos; umbrales más altos detectan menos bordes.
+
+    Ejemplo de uso:
+    ```python
+    edges = applyCanny(grayscale_image, 100, 200)
+    cv2.imshow('Bordes detectados', edges)
+    ```
+
+    Esta función es útil para la detección de contornos, segmentación de objetos y análisis de imágenes donde los bordes juegan un papel importante.
+    """
+    return cv2.Canny(grayscale, inf, sup)
 # Obtener centroide de contornos y dibujarlo
 def getCentroid(contornos, frame):
     """
@@ -204,11 +239,17 @@ while True:
     # Imagen en escala de grises
     grayscale = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
     
+    #filtro gaussiano para eliminacion de ruido (matriz impar para funcionamiento optimo) 0 para 
+    #determinar automaticamente valor de campana de gauss
+    gaussiana = cv2.GaussianBlur(grayscale, (5, 5), 0)
     
-    # LOCALIZACION DE PUNTOS
     
     # Aplicar umbral (Thresholding)
-    _, binary_image = applyThreshold(grayscale)
+    #_, binary_image = applyThreshold(gaussiana)
+    # Aplicar canny 
+    binary_image = applyCanny(gaussiana)
+    
+    # LOCALIZACION DE PUNTOS
     
     # Encontramos contornos usando findCountours
     #(contornos, jerarquia) = cv2.findContours(binary_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -216,8 +257,8 @@ while True:
     (contornos, jerarquia) = cv2.findContours(binary_image.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
     
     # Definir el área máxima permitida para los contornos
-    area_maxima = 20 # Ajusta este valor según sea necesario
-    area_minima = 10
+    area_maxima = 120# Ajusta este valor según sea necesario
+    area_minima = 0
     # Filtrar los contornos por área
     contornos_filtrados = [contorno for contorno in contornos if area_minima < cv2.contourArea(contorno) < area_maxima]
     
